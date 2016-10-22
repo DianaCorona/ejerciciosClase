@@ -1,0 +1,7 @@
+{{#if isEditing}}
+	{{input value=text type='text'}}
+	<button{{action 'guardar'  false}}>Guardar</button>
+	<button{{action 'toggleEditing' false}}>Cancelar</button>
+{{else}}
+	<h4 {{action 'toggleEditing' true}}>{{upcase text format='capital'}}</h4>
+{{/if}}
