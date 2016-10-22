@@ -6,6 +6,11 @@ export default Ember.Component.extend({
 			console.log('Soy el destroyTaskInComponent que llamó el component');
 
 			this.sendAction('destroyTaskOutOfComponent', item);
+		},
+		toggleCheckBox (item ) {
+			console.log(event.target.checked);
+			item.set('complete', event.target.checked);
+			item.save();
 		}
 	}
 });

@@ -21,7 +21,6 @@ export default Ember.Route.extend({
 			// }.bind(this));
 
 			this.get('session').authenticate('authenticator:oauth2', username, password).catch(()=>{
-				debugger
 			}).then(()=>{
 				this.transitionTo('home');
 			})

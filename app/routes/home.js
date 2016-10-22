@@ -38,12 +38,16 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 		// Opcion C)
 		// Model es un arreglo de tipo DS.RecordArray (promise+arreglo)
 		let tasksPromise = this.store.findAll('task');
+
 		return tasksPromise.then((arrayOfTasks)=>{
 				return arrayOfTasks.filter((t)=>{
 					if(params.view === 'past'){
 						return t.get('due_date') < new Date();
 					}
-					return t.get('due_date') >= new Date();
+					else if (params.view === 'notCompleted') {						
+						return t.get('complete') != true;					
+					}
+
 				});
 			});
 	},
